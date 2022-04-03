@@ -105,8 +105,8 @@ public class TestStreamAPI4 {
 	// 把集合中所有名字取出来添加到集合中
 	@Test
 	public void test4() {
-		employees.stream()
-		https://www.youtube.com/watch?v=zLfQirVLWig&list=PLLPovsDEpByb8w-0zVVp-ZSxOgLkgfg5H&index=13
-			8:07
+		// employees.stream()
+		// https://www.youtube.com/watch?v=zLfQirVLWig&list=PLLPovsDEpByb8w-0zVVp-ZSxOgLkgfg5H&index=13
+		//	8:07
 	}
 }
