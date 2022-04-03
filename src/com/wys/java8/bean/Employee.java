@@ -1,7 +1,7 @@
 package com.wys.java8.bean;
 
 import java.util.Objects;
-
+//
 public class Employee {
 
 	private Integer id;
