@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>事件修饰符</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+        <style>
+            *{
+                margin-top: 20px;
+            }
+            .demo1{
+                height: 50px;
+                background-color: skyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <!--
+            Vue中的事件修饰符：
+                １、prevent：阻止默认事件（常用）
+                ２、stop：阻止事件冒泡（常用）
+                ３、once：事件只触发一次（常用）
+                ４、capture：使用事件的捕获模式
+                ５、self：只有event.target是当前操作的元素时才触发事件
+                ６、passive：事件的默认行为立即执行，无需等待事件回调执行完毕（常用）
+        -->
+
+        <!-- 容器1-->
+        <div id="root">
+            <h2>欢迎来到{{name}}学习</h2>
+            <!-- 默认情况下，先alert, 再迁移到google画面-->
+            <!-- 通过event属性来阻止默认行为，即不进行href中的画面迁移，只处理showInfo1中的内容-->
+            <a href="http://www.google.jp" @click="showInfo1">点我提示信息</a><br>
+            <!--1. 通过Vue的事件修饰符@click.prevent来阻止默认行为，即不进行href中的画面迁移，只处理showInfo2中的内容-->
+            <!-- 阻止默认事件(常用)-->
+            <a href="http://www.google.jp" @click.prevent="showInfo2">点我提示信息_阻止默认事件(常用)</a>
+            <!--2. 阻止事件冒泡(常用), @click.stop加在里面-->
+            <div class="demo1" @click="showInfo3">
+                <button @click.stop="showInfo3">点我提示信息_阻止事件冒泡(常用)</button>
+            </div>
+            <!--3. 事件只触发一次(常用)-->
+            <button @click.once="showInfo3">点我提示信息_事件只触发一次(常用)</button>
+        </div>
+    </body>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        // 创建VUE对象1,管理容器1
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                name: '尚硅谷'
+            },
+            methods:{
+                showInfo1(event){
+                    event.preventDefault() // 阻止默认行为，即不会执行href中的画面迁移
+                    alert('同学你好!');
+                },
+                showInfo2(event){
+                    alert('同学你好!');
+                },
+                showInfo3(event){
+                    // event.stopPropagation() // 也可以通过左边的写法，阻止事件冒泡
+                    alert('同学你好!');
+                }
+            }
+        })
+    </script>
+</html>

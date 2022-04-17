@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>el与data的两种写法</title>
+        <!-- 引入Vue -->
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <!--准备一个容器-->
+        <div id="root">
+            <h1>你好，{{name}}</h1>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false // 阻止vue在启动时生成生产提示
+        // el和data的两种写法   el用哪个都可以，data尽量用第二个
+        const v = new Vue({
+            // el: '#root', el第一种写法
+            // ↓data的第一种写法，对象式
+            //data:{
+            //    name: '尚硅谷'
+            //}
+            // ↑data的第一种写法，对象式
+            
+            // ↓data的第二种写法，函数式，必须要有return返回值
+            // data:function可简写为data,不可以使用箭头函数
+            // data:function(){
+            data(){
+                console.log('@@@', this) // 该this，是调用data函数的VUE对象
+                return {
+                    name: '尚硅谷'
+                }
+            }
+            // ↑data的第二种写法，函数式
+        })
+        console.log(v)
+        v.$mount('#root') // el第二种写法，更灵活
+    </script>
+</html>

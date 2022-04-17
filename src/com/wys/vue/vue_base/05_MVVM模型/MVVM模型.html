@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>MVVM模型</title>
+        <!-- 引入Vue -->
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <!--准备一个容器-->
+        <div id="root">
+            <h1>学校名称：{{name}}</h1>
+            <h1>学校地址：{{address}}</h1>
+            <h1>vue中所有属性都可以直接使用：{{$options}}</h1>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false // 阻止vue在启动时生成生产提示
+
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                name: '尚硅谷',
+                address: '北京'
+            }
+        })
+        console.log(vm)
+    </script>
+</html>
