@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>2.姓名案例_methods实现</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+
+        <!-- 容器-->
+        <div id="root">
+            姓： <input type="text" v-model="firstName"><br/><br/>
+            名： <input type="text" v-model="lastName"><br/><br/>
+            <!-- 
+                绑定事件的时候，方法后面的小括号可以写，可以不写。
+                但下面插值语法里面，想取方法返回值，小括号得写 
+                {{fullName()}}： fullName函数的返回值
+                {{fullName}}： fullName函数
+            -->
+            全名：<span>{{fullName()}}</span>
+        </div>
+        
+        <script type="text/javascript">
+            Vue.config.productionTip = false
+
+            const vm = new Vue({
+                el: '#root',
+                data: {
+                    firstName: '张',
+                    lastName: '三'
+                },
+                methods:{
+                    fullName(){
+                        return this.firstName + '-' + this.lastName //this ⇒ 当前Vue对象vm
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

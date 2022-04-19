@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>事件修饰符 </title>
+        <title>事件修饰符</title>
         <script type="text/javascript" src="../js/vue.js"></script>
         <style>
             *{
@@ -36,8 +36,10 @@
             <a href="http://www.google.jp" @click.prevent="showInfo2">点我提示信息_阻止默认事件(常用)</a>
             <!--2. 阻止事件冒泡(常用), @click.stop加在里面-->
             <div class="demo1" @click="showInfo3">
-                <button @click.stop="showInfo3">点我提示信息_阻止事件冒泡(常用)</button>
-            </div>
+                <button @click.stop="showInfo3">点我提示信息_阻止事件冒泡(常用)</button><br>
+                <!-- 事件修饰符可以连续写 -->
+                <a href="http://www.google.jp" @click.stop.prevent="showInfo2">点我提示信息_先阻止事件冒泡，再阻止默认行为</a>
+            </div><br>
             <!--3. 事件只触发一次(常用)-->
             <button @click.once="showInfo3">点我提示信息_事件只触发一次(常用)</button>
         </div>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>※键盘事件※</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <!--
+            1.Vue常用的按键别名
+                回车 ⇒ enter
+                删除 ⇒ delete(捕获'删除'和'退格'键)
+                退出 ⇒ esc
+                空格 ⇒ space
+                换行 ⇒ tab  ← 特殊：需要用keyDown,不能用keyup
+                上 ⇒ up
+                下 ⇒ down
+                左 ⇒ left
+                右 ⇒ right
+            2.Vue未提供别名的按键，可以使用按键原始的key值去绑定,
+              但两个单词合并的键需要都小写并用短横线连接，eg. @keyUp.caps-lock
+            
+            3.系统修饰键(用法特殊):ctrl、alt、shift、meta   
+                ① 配合keyup使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发
+                ② 配合keydown使用：正常触发事件     @keydown.ctrl、@keydown.alt、@keydown.shift、@keydown.meta
+            
+            4.也可以使用keycode去制定具体的按键(不推荐) eg. @keyUp.13=
+
+            5.Vue.config.keyCodes.自定义键名 = 键码，可以定制按键别名。  eg. @keyUp.自定义键名
+        -->
+        <!-- 容器1-->
+        <!-- keyDown：押下时响应-->
+        <!-- keyUp：押下并松手时响应，一般用这个-->
+        <div id="root">
+            <h2>欢迎来到{{name}}学习</h2>
+            <input type="text" placeholder="按下回车提示输入_ES6" @keyup="showInfo1"><br>
+            <input type="text" placeholder="按下回车提示输入_vue" @keyup.enter="showInfo2"> 
+            <!--@keyup.ctrl.y：表示按下CTRL+Y才能反应-->
+        </div>
+    </body>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                name: '尚硅谷'
+            },
+            methods:{
+                showInfo1(e) {
+                    // 键盘上每个按键都有一个名称key和一个值keycode(每个key开头字母大写)
+                    // eg. 回车键的key: Enter、keyCode：13
+                    // console.log(e.key,e.keyCode)
+                    if (e.keyCode !==13) return
+                    // e.target.value：输入的内容
+                    console.log(e.target.value)
+                },
+                showInfo2(e) {
+                    // e.target.value：输入的内容
+                    console.log(e.target.value)
+                }
+            }
+        })
+    </script>
+</html>
